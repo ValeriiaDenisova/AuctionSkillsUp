@@ -1,18 +1,43 @@
 package com.su.main;
 
+import com.su.domain.Item;
+import com.su.domain.Lot;
+import com.su.domain.User;
 import com.su.service.AuctionService;
+import com.su.service.ItemService;
+import com.su.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-/**
- * Created by denisova on 9/28/16.
- */
+import java.math.BigDecimal;
+
 public class Main {
     public static void main(String[] args){
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("service-beans.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("main.xml");
         AuctionService auctionService = context.getBean(AuctionService.class);
+        UserService userService = context.getBean(UserService.class);
+        ItemService itemService = context.getBean(ItemService.class);
 
-        System.out.println(auctionService.getUsers().size());
+        User user1 = userService.createUser("oliaLogin", "Ivanova", "Olia");
+        User user2 = userService.createUser("aniaLogin", "Petrova", "Ania");
+        User user3 = userService.createUser("petiaLogin", "Sidorov", "Petia");
+        User user4 = userService.createUser("sashaLogin", "Fomich", "Sash");
+
+        Item item1 = itemService.createItem("clock", "old clock");
+        Item item2 = itemService.createItem("car", "red car");
+
+        Lot lot = auctionService.createLot(item1, user1, new BigDecimal(100));
+        auctionService.placeBid(lot, new BigDecimal(120), user2);
+        auctionService.placeBid(lot, user3);
+        auctionService.placeBid(lot, new BigDecimal(200), user4);
+
+        auctionService.closeLot(lot);
+
+        System.out.println(lot.getBuyer() + " is WINNER");
+
+
+
+
     }
 }

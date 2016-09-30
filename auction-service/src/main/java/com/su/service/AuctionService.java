@@ -14,5 +14,10 @@ public interface AuctionService {
 
     List<Lot> getActiveLots();
 
-    List<User> getUsers();
+    void placeBid(Lot lot, User bider);
+
+    void placeBid(Lot lot, BigDecimal newPrice, User bider);
+
+    Lot closeLot(Lot lot);
+
 }

@@ -2,13 +2,12 @@ package com.su.daoImpl;
 
 import com.su.dao.ItemDao;
 import com.su.domain.Item;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by denisova on 9/27/16.
- */
+@Component
 public class ItemDaoImpl implements ItemDao {
 
     List<Item> items = new ArrayList<>();
