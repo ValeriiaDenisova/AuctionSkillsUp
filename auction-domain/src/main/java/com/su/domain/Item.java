@@ -1,9 +1,17 @@
 package com.su.domain;
 
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Data
+@Entity
 public class Item {
 
-    String title;
-    String description;
+    @Id
+    private Long id;
+    private String title;
+    private String description;
 
     public String getDescription() {
         return description;

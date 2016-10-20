@@ -1,18 +1,28 @@
 package com.su.domain;
 
-/**
- * Created by denisova on 9/27/16.
- */
+import lombok.Data;
+import javax.persistence.*;
+import java.util.List;
+
+@Data
+@Entity
 public class User {
-    String login;
-    String firstName;
-    String lastName;
+
+    @Id
+    private Long id;
+
+    private String login;
+    private String firstName;
+    private String lastName;
 
     public User(String login, String firstName, String lastName) {
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    @OneToMany(mappedBy = "owner")
+    private List<Lot> lots;
 
     public String getLogin() {
         return login;
