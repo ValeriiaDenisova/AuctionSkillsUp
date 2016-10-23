@@ -31,6 +31,6 @@ public class UserDaoImpl implements UserDao {
     @Override
     @Transactional
     public void remove(User entity) {
-    em.remove(entity);
+        em.remove(entity);
     }
 }
