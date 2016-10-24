@@ -21,6 +21,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.su</groupId>
+            <artifactId>auction-spring-data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

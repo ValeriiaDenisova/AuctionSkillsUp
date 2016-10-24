@@ -15,6 +15,7 @@
         <module>auction-dao-impl</module>
         <module>auction-main</module>
         <module>auction-hibernate</module>
+        <module>auction-spring-data</module>
     </modules>
 
     <properties>

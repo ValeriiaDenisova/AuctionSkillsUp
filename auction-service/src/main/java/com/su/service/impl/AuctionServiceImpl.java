@@ -63,9 +63,4 @@ public class AuctionServiceImpl implements AuctionService {
         return lot;
     }
 
-    public void setLotDao(String lotDao) {
-    }
-
-    public void setUserDao(String userDao) {
-    }
 }

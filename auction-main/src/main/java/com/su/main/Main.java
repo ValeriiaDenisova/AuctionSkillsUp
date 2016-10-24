@@ -1,5 +1,7 @@
 package com.su.main;
 
+import com.su.auction.repository.LotRepository;
+import com.su.auction.repository.UserRepository;
 import com.su.domain.Item;
 import com.su.domain.Lot;
 import com.su.domain.User;
@@ -19,6 +21,9 @@ public class Main {
         UserService userService = context.getBean(UserService.class);
         ItemService itemService = context.getBean(ItemService.class);
 
+        UserRepository userRepository = context.getBean(UserRepository.class);
+        LotRepository lotRepository = context.getBean(LotRepository.class);
+
         User user1 = userService.createUser("oliaLogin", "Ivanova", "Olia");
         User user2 = userService.createUser("aniaLogin", "Petrova", "Ania");
         User user3 = userService.createUser("petiaLogin", "Sidorov", "Petia");
@@ -36,6 +41,8 @@ public class Main {
 
         System.out.println(lot.getBuyer() + " is WINNER");
 
+        System.out.println("Lots: " + lotRepository.count());
+        System.out.println("Users: " + userRepository.count());
 
 
 
