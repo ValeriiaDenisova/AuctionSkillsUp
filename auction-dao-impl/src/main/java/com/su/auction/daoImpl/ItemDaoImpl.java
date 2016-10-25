@@ -1,6 +1,6 @@
-package com.su.daoImpl;
+package com.su.auction.daoImpl;
 
-import com.su.dao.ItemDao;
+import com.su.auction.dao.ItemDao;
 import com.su.domain.Item;
 import org.springframework.stereotype.Component;
 

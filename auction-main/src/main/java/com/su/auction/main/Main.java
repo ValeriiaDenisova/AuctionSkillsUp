@@ -1,13 +1,15 @@
-package com.su.main;
+package com.su.auction.main;
 
+import com.su.auction.dao.ItemDao;
+import com.su.auction.dao.UserDao;
 import com.su.auction.repository.LotRepository;
 import com.su.auction.repository.UserRepository;
 import com.su.domain.Item;
 import com.su.domain.Lot;
 import com.su.domain.User;
-import com.su.service.AuctionService;
-import com.su.service.ItemService;
-import com.su.service.UserService;
+import com.su.auction.service.AuctionService;
+import com.su.auction.service.ItemService;
+import com.su.auction.service.UserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -31,6 +33,19 @@ public class Main {
 
         Item item1 = itemService.createItem("clock", "old clock");
         Item item2 = itemService.createItem("car", "red car");
+
+//        User user1 = new User("oliaLogin", "Ivanova", "Olia");
+//        User user2 = new User("aniaLogin", "Petrova", "Ania");
+//        User user3 = new User("petiaLogin", "Sidorov", "Petia");
+//        User user4 = new User("sashaLogin", "Fomich", "Sash");
+
+//        userDao.add(user1);
+//        userDao.add(user2);
+//        userDao.add(user3);
+//        userDao.add(user4);
+//
+//        Item item = new Item("clock", "old clock");
+//        itemDao.add(item);
 
         Lot lot = auctionService.createLot(item1, user1, new BigDecimal(100));
         auctionService.placeBid(lot, new BigDecimal(120), user2);

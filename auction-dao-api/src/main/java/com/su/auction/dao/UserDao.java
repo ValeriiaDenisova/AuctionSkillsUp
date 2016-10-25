@@ -1,4 +1,4 @@
-package com.su.dao;
+package com.su.auction.dao;
 
 import com.su.domain.*;
 

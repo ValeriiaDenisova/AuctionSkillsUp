@@ -1,4 +1,4 @@
-package com.su.service;
+package com.su.auction.service;
 
 import com.su.domain.Item;
 

@@ -1,10 +1,9 @@
-package com.su.daoImpl;
+package com.su.auction.daoImpl;
 
-import com.su.dao.UserDao;
+import com.su.auction.dao.UserDao;
 import com.su.domain.User;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 

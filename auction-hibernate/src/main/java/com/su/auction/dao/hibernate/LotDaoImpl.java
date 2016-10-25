@@ -1,8 +1,7 @@
-package com.su.dao.hibernate;
+package com.su.auction.dao.hibernate;
 
-import com.su.dao.LotDao;
+import com.su.auction.dao.LotDao;
 import com.su.domain.Lot;
-import com.su.domain.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

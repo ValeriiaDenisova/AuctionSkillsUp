@@ -1,6 +1,6 @@
-package com.su.dao.hibernate;
+package com.su.auction.dao.hibernate;
 
-import com.su.dao.ItemDao;
+import com.su.auction.dao.ItemDao;
 import com.su.domain.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

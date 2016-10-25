@@ -1,9 +1,9 @@
-package com.su.service.impl;
+package com.su.auction.service.impl;
 
 
-import com.su.dao.UserDao;
+import com.su.auction.dao.UserDao;
+import com.su.auction.service.UserService;
 import com.su.domain.User;
-import com.su.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
