@@ -12,21 +12,19 @@ import java.util.List;
 
 @Repository
 public class LotDaoImpl implements LotDao {
+
     @PersistenceContext
     private EntityManager em;
 
-    @Override
     public List<Lot> getAll() {
-        return em.createQuery("select l from Lot l").getResultList();
+        return em.createQuery("Select l from Lot l").getResultList();
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional
     public void add(Lot entity) {
-        em.persist(entity);
+        em.merge(entity);
     }
 
-    @Override
     @Transactional
     public void remove(Lot entity) {
         em.remove(entity);

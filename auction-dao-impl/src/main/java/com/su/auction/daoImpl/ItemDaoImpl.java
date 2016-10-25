@@ -3,27 +3,31 @@ package com.su.auction.daoImpl;
 import com.su.auction.dao.ItemDao;
 import com.su.domain.Item;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class ItemDaoImpl implements ItemDao {
 
-    List<Item> items = new ArrayList<>();
+    @PersistenceContext
+    private EntityManager em;
 
-    @Override
     public List<Item> getAll() {
-        return items;
+        return em.createQuery("Select i from Item i").getResultList();
     }
 
-    @Override
-    public void add(Item item) {
-        items.add(item);
+    @Transactional
+    public void add(Item entity) {
+        em.persist(entity);
     }
 
-    @Override
-    public void remove(Item item) {
-        items.remove(item);
+    @Transactional
+    public void remove(Item entity) {
+        em.remove(entity);
     }
 }

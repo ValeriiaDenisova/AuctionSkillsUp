@@ -34,19 +34,6 @@ public class Main {
         Item item1 = itemService.createItem("clock", "old clock");
         Item item2 = itemService.createItem("car", "red car");
 
-//        User user1 = new User("oliaLogin", "Ivanova", "Olia");
-//        User user2 = new User("aniaLogin", "Petrova", "Ania");
-//        User user3 = new User("petiaLogin", "Sidorov", "Petia");
-//        User user4 = new User("sashaLogin", "Fomich", "Sash");
-
-//        userDao.add(user1);
-//        userDao.add(user2);
-//        userDao.add(user3);
-//        userDao.add(user4);
-//
-//        Item item = new Item("clock", "old clock");
-//        itemDao.add(item);
-
         Lot lot = auctionService.createLot(item1, user1, new BigDecimal(100));
         auctionService.placeBid(lot, new BigDecimal(120), user2);
         auctionService.placeBid(lot, user3);
@@ -54,6 +41,7 @@ public class Main {
 
         auctionService.closeLot(lot);
 
+        System.out.println();
         System.out.println(lot.getBuyer() + " is WINNER");
 
         System.out.println("Lots: " + lotRepository.count());

@@ -34,6 +34,8 @@ public class AuctionServiceImpl implements AuctionService {
         lot.setOwner(user);
         lot.setStartPrice(startPrice);
         lot.setDatePlaced(new Date());
+        itemDao.add(item);
+        userDao.add(user);
         lotDao.add(lot);
         return lot;
     }
@@ -60,30 +62,6 @@ public class AuctionServiceImpl implements AuctionService {
         System.out.println("Users: " + userDao.getAll());
     }
 
-//    private LotDao lotDao;
-//
-//    @Autowired
-//    public AuctionServiceImpl(LotDao lotDao) {
-//        this.lotDao = lotDao;
-//    }
-//
-//    @Override
-//    public Lot createLot(Item item, User user, BigDecimal startPrice) {
-//        Lot lot = new Lot();
-//        lot.setItem(item);
-//        lot.setOwner(user);
-//        lot.setStartPrice(startPrice);
-//        lot.setCurrentPrice(startPrice);
-//        lot.setDatePlaced(new Date());
-//        lotDao.add(lot);
-//        return lot;
-//    }
-//
-//    @Override
-//    public List<Lot> getActiveLots() {
-//        return lotDao.getAll().stream().filter(lot -> lot.getDateEnd() == null).collect(Collectors.toList());
-//    }
-//
     @Override
     public void placeBid(Lot lot, User bider) {
         BigDecimal newPrice = lot.getCurrentPrice().add(lot.getCurrentPrice().multiply(BigDecimal.valueOf(0.5)));
@@ -93,7 +71,7 @@ public class AuctionServiceImpl implements AuctionService {
     @Override
     public void placeBid(Lot lot, BigDecimal newPrice, User bider) {
         BigDecimal currentPrice = lot.getCurrentPrice();
-        if (currentPrice.compareTo(newPrice) == -1) {
+        if (currentPrice == null || currentPrice.compareTo(newPrice) == -1){
             lot.setCurrentPrice(newPrice);
             lot.setBuyer(bider);
         }

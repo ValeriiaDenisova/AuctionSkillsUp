@@ -2,29 +2,46 @@ package com.su.auction.daoImpl;
 
 import com.su.auction.dao.UserDao;
 import com.su.domain.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class UserDaoImpl implements UserDao {
 
-    List<User> users = new ArrayList<>();
+    @Autowired
+    private EntityManagerFactory emf;
 
-    @Override
     public List<User> getAll() {
-        return users;
+        EntityManager em = emf.createEntityManager();
+        return em.createQuery("select u from User u").getResultList();
     }
 
-    @Override
-    public void add(User user) {
-        users.add(user);
+    public void add(User entity) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.persist(entity);
+
+        transaction.commit();
+        em.close();
     }
 
-    @Override
-    public void remove(User user) {
-        users.remove(user);
+    public void remove(User entity) {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+
+        em.remove(entity);
+
+        transaction.commit();
+        em.close();
     }
 
 }
