@@ -21,15 +21,4 @@ public interface AuctionService {
 
     Lot closeLot(Lot lot);
 
-
-//    Lot createLot(Item item, User user, BigDecimal startPrice);
-//
-//    List<Lot> getActiveLots();
-//
-//    void placeBid(Lot lot, User bider);
-//
-//    void placeBid(Lot lot, BigDecimal newPrice, User bider);
-//
-//    Lot closeLot(Lot lot);
-
 }

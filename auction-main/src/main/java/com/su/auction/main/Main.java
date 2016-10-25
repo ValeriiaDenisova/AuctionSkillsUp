@@ -34,18 +34,29 @@ public class Main {
         Item item1 = itemService.createItem("clock", "old clock");
         Item item2 = itemService.createItem("car", "red car");
 
-        Lot lot = auctionService.createLot(item1, user1, new BigDecimal(100));
-        auctionService.placeBid(lot, new BigDecimal(120), user2);
-        auctionService.placeBid(lot, user3);
-        auctionService.placeBid(lot, new BigDecimal(200), user4);
+        Lot lot1 = auctionService.createLot(item1, user1, new BigDecimal(100));
+        auctionService.placeBid(lot1, new BigDecimal(120), user2);
+        auctionService.placeBid(lot1, user3);
+        auctionService.placeBid(lot1, new BigDecimal(200), user4);
 
-        auctionService.closeLot(lot);
+        auctionService.closeLot(lot1);
+
+        Lot lot2 = auctionService.createLot(item2, user4, new BigDecimal(1000));
+        auctionService.placeBid(lot2, new BigDecimal(1200), user3);
+        auctionService.placeBid(lot2, user2);
+        auctionService.placeBid(lot2, new BigDecimal(2000), user1);
+
+        auctionService.closeLot(lot2);
 
         System.out.println();
-        System.out.println(lot.getBuyer() + " is WINNER");
+        System.out.println(lot1.getBuyer() + " is WINNER");
 
+        System.out.println();
+        System.out.println(lot2.getBuyer() + " is WINNER");
+
+        System.out.println("Items: " + auctionService.getItems().size());
+        auctionService.soutUsers();
         System.out.println("Lots: " + lotRepository.count());
-        System.out.println("Users: " + userRepository.count());
 
 
 
